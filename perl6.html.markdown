@@ -964,7 +964,7 @@ say [[&add]] 1, 2, 3; #=> 6
 # This one is an infix meta-operator than also can be used as a "normal" operator.
 # It takes an optional binary function (by default, it just creates a pair),
 #  and will pop one value off of each array and call its binary function on these
-#  until it runs out of elements. It runs the an array with all these new elements.
+#  until it runs out of elements. It creates an array with all these new elements.
 (1, 2) Z (3, 4); # ((1, 3), (2, 4)), since by default, the function makes an array
 1..3 Z+ 4..6; # (5, 7, 9), using the custom infix:<+> function
 
@@ -987,7 +987,7 @@ my @list = 1, 2, 3 ... 10; # basic deducing
 my @list = 1, 2, 3 ...^ 10; # as with ranges, you can exclude the last element (when the predicate matches)
 my @list = 1, 3, 9 ... * > 30; # you can use a predicate (with the Whatever Star, here)
 my @list = 1, 3, 9 ... { $_ > 30 }; # (equivalent to the above)
-my @fib = 1, 1, *+* ... *; # lazy infinite list of prime numbers, computed using a closure !
+my @fib = 1, 1, *+* ... *; # lazy infinite list of fibonacci numbers, computed using a closure !
 my @fib = 1, 1, -> $a, $b { $a + $b } ... *; # (equivalent to the above)
 say @fib[^10]; #=> 1 1 2 3 5 8 13 21 34 55
                # (using a range as the index)
